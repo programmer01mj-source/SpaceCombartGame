@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bapb8sglew67w"]
+
+[ext_resource type="Script" uid="uid://doe6eypjx266g" path="res://scripts/enemy_laser.gd" id="1_ruhsj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ql73s"]
+size = Vector3(0.15, 0.15, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ql73s"]
+size = Vector3(0.15, 0.15, 1.5)
+
+[node name="EnemyLaser" type="Area3D" unique_id=149312771]
+script = ExtResource("1_ruhsj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=374684677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008412652, -0.0048019662, 0.00020626187)
+mesh = SubResource("BoxMesh_ql73s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1761298779]
+shape = SubResource("BoxShape3D_ql73s")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cgeebka6wyksj"]
+
+[ext_resource type="Script" uid="uid://bnhgqmtsaph3u" path="res://scripts/player_laser.gd" id="1_8lrg4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_47w3t"]
+size = Vector3(0.15, 0.15, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f1so"]
+size = Vector3(0.15, 0.15, 1.5)
+
+[node name="PlayerLaser" type="Area3D" unique_id=319734634]
+script = ExtResource("1_8lrg4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=988620330]
+mesh = SubResource("BoxMesh_47w3t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=299678635]
+shape = SubResource("BoxShape3D_4f1so")

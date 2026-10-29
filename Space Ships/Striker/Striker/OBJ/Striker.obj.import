@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bighlo5ip161x"
+path="res://.godot/imported/Striker.obj-105085131d97d8e993238bd7271b0c0a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Striker.obj-105085131d97d8e993238bd7271b0c0a.mesh"]
+
+source_file="res://Space Ships/Striker/Striker/OBJ/Striker.obj"
+dest_files=["res://.godot/imported/Striker.obj-105085131d97d8e993238bd7271b0c0a.mesh", "res://.godot/imported/Striker.obj-105085131d97d8e993238bd7271b0c0a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

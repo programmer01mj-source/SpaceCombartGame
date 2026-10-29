@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b0b14dtg4l8ay"]
+
+[ext_resource type="PackedScene" uid="uid://d4j13iti2y0dp" path="res://player.tscn" id="1_1bl4i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spmrl"]
+albedo_color = Color(0.3529412, 0.23529412, 0.19607843, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ql73s"]
+size = Vector2(200, 200)
+
+[sub_resource type="Environment" id="Environment_ql73s"]
+background_mode = 1
+background_color = Color(0.015686275, 0.02745098, 0.1254902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0s4m"]
+albedo_color = Color(0.3019608, 0.21960784, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ql73s"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ql73s"]
+radius = 2.0
+
+[node name="PlanetLevel" type="Node3D" unique_id=252940249]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=611727805]
+material_override = SubResource("StandardMaterial3D_spmrl")
+mesh = SubResource("PlaneMesh_ql73s")
+
+[node name="SunLight" type="DirectionalLight3D" parent="." unique_id=2104310288]
+transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="PlanetCamera" type="Camera3D" parent="." unique_id=461045525]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 15, 20)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2015248417]
+environment = SubResource("Environment_ql73s")
+
+[node name="RockObstacle3D" type="StaticBody3D" parent="." unique_id=1277484873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -5)
+
+[node name="RockMesh" type="MeshInstance3D" parent="RockObstacle3D" unique_id=841328400]
+material_override = SubResource("StandardMaterial3D_v0s4m")
+mesh = SubResource("SphereMesh_ql73s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RockObstacle3D" unique_id=930902610]
+shape = SubResource("SphereShape3D_ql73s")
+
+[node name="Player" parent="." unique_id=2011465301 instance=ExtResource("1_1bl4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dwffdpsx225l6"]
+
+[ext_resource type="Script" uid="uid://2qxyvpofbr1l" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://shgcle7koluo" path="res://Space Ships/Bob/Bob/glTF/Bob.gltf" id="2_qhqgy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v0s4m"]
+radius = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=2011465301]
+script = ExtResource("1_g2els")
+
+[node name="Shipmodel" type="Node3D" parent="." unique_id=1357414114]
+
+[node name="Bob" parent="Shipmodel" unique_id=1450355404 instance=ExtResource("2_qhqgy")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1061986539]
+shape = SubResource("SphereShape3D_v0s4m")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1022596760]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 3, 8)
+current = true
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1344336789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
