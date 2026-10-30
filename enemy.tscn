@@ -9,6 +9,9 @@ radius = 1.0
 
 [node name="Enemy" type="CharacterBody3D" unique_id=410683380]
 script = ExtResource("1_7k104")
+speed = null
+health = null
+shooting_interval = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1257546957]
 mesh = SubResource("BoxMesh_ql73s")

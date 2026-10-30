@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dv8wvx60sldkj"]
+
+[ext_resource type="Script" uid="uid://cn5b42jbskjme" path="res://scripts/level_completed.gd" id="1_kb4ov"]
+
+[node name="LevelCompleted" type="Control" unique_id=1255008255]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kb4ov")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1885054555]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.5
+offset_top = -57.5
+offset_right = 106.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1409900628]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=491159488]
+layout_mode = 2
+text = "PLANET LEVEL COMPLETED!"
+
+[node name="TimeLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=320734338]
+layout_mode = 2
+text = "Time Taken: 0"
+
+[node name="ReplayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1028760272]
+layout_mode = 2
+text = "PLAY AGAIN"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=311286502]
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

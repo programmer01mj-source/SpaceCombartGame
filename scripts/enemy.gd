@@ -1,6 +1,8 @@
 
 extends CharacterBody3D
 
+signal enemy_destroyed
+
 @export var speed: float = 3.0
 @export var health: int = 3
 
@@ -39,6 +41,7 @@ func take_damage(amount: int) -> void:
 
 	if health <= 0:
 		print("Enemy destroyed!")
+		enemy_destroyed.emit()
 		queue_free()
 		
 func _process(_delta: float) -> void:

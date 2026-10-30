@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://b0b14dtg4l8ay"]
 
 [ext_resource type="PackedScene" uid="uid://d4j13iti2y0dp" path="res://player.tscn" id="1_1bl4i"]
+[ext_resource type="Script" uid="uid://drmda3de0w8vr" path="res://scripts/planet_level.gd" id="1_ovg5i"]
+[ext_resource type="PackedScene" uid="uid://b35d3pyx62ws" path="res://enemy.tscn" id="2_5xc4u"]
+[ext_resource type="PackedScene" uid="uid://wc8qhd62dpb4" path="res://turret.tscn" id="4_cjmfg"]
+[ext_resource type="PackedScene" uid="uid://dvv6fonl8h05u" path="res://hud.tscn" id="5_okmrp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spmrl"]
 albedo_color = Color(0.3529412, 0.23529412, 0.19607843, 1)
@@ -22,7 +26,11 @@ height = 4.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_ql73s"]
 radius = 2.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_vg3be"]
+radius = 5.0
+
 [node name="PlanetLevel" type="Node3D" unique_id=252940249]
+script = ExtResource("1_ovg5i")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=611727805]
 material_override = SubResource("StandardMaterial3D_spmrl")
@@ -48,5 +56,47 @@ mesh = SubResource("SphereMesh_ql73s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RockObstacle3D" unique_id=930902610]
 shape = SubResource("SphereShape3D_ql73s")
 
+[node name="RockObstacle3D2" type="StaticBody3D" parent="." unique_id=54921091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -10)
+
+[node name="RockMesh" type="MeshInstance3D" parent="RockObstacle3D2" unique_id=1510188507]
+material_override = SubResource("StandardMaterial3D_v0s4m")
+mesh = SubResource("SphereMesh_ql73s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RockObstacle3D2" unique_id=842790545]
+shape = SubResource("SphereShape3D_ql73s")
+
+[node name="RockObstacle3D3" type="StaticBody3D" parent="." unique_id=1060988064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -15)
+
+[node name="RockMesh" type="MeshInstance3D" parent="RockObstacle3D3" unique_id=696603895]
+material_override = SubResource("StandardMaterial3D_v0s4m")
+mesh = SubResource("SphereMesh_ql73s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RockObstacle3D3" unique_id=1714765455]
+shape = SubResource("SphereShape3D_ql73s")
+
 [node name="Player" parent="." unique_id=2011465301 instance=ExtResource("1_1bl4i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="PlanetEnemy1" parent="." unique_id=410683380 groups=["planet_enemies"] instance=ExtResource("2_5xc4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -15)
+
+[node name="PlanetEnemy2" parent="." unique_id=1979808415 groups=["planet_enemies"] instance=ExtResource("2_5xc4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -20)
+
+[node name="PlanetEnemy3" parent="." unique_id=968151295 groups=["planet_enemies"] instance=ExtResource("2_5xc4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -20)
+
+[node name="GoalArea" type="Area3D" parent="." unique_id=1435810036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -30)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea" unique_id=1409985758]
+shape = SubResource("SphereShape3D_vg3be")
+
+[node name="PlanetTurret1" parent="." unique_id=1273980366 instance=ExtResource("4_cjmfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+
+[node name="HUD" parent="." unique_id=1857551717 instance=ExtResource("5_okmrp")]
+
+[connection signal="body_entered" from="GoalArea" to="." method="_on_goal_area_body_entered"]
